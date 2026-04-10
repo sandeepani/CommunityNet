@@ -181,7 +181,7 @@ function App() {
         <div className="onboarding-modal card">
           {onboardingStep === 0 && (
             <div className="onboarding-step">
-              <h2>Welcome to Community Net</h2>
+              <h2>Welcome to Clearing Ripple</h2>
               <p className="onboarding-subtitle">A mindful social space designed with karma, compassion, and inclusive equality</p>
               
               <h3>Reflect on Your Purpose</h3>
@@ -298,7 +298,7 @@ function App() {
       <div className="header-content">
         <div className="logo">
           <span className="logo-icon">🌐</span>
-          <h1>Community Net</h1>
+          <h1>Clearing Ripple</h1>
         </div>
         <nav className="nav-menu">
           <button 
@@ -644,7 +644,7 @@ function App() {
 
       <footer className="app-footer">
         <p className="text-muted text-center">
-          Community Net — Designed with karma, compassion, and inclusive equality
+          Clearing Ripple — Designed with karma, compassion, and inclusive equality
         </p>
       </footer>
     </div>

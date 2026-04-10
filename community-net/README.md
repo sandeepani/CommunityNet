@@ -1,4 +1,4 @@
-# Community Net
+# Clearing Ripple
 
 A mindful social media platform designed through the lens of **karma (action-consequence), rebirth, mindfulness, kindness (metta/karuna), and inclusive equality**.
 
@@ -130,7 +130,7 @@ community-net/
 5. **Inclusive Equality**: No hierarchy based on followers or status
 6. **Privacy by Design**: Minimal data collection, transparent practices
 
-## 🧘 The Feeling of Using Community Net
+## 🧘 The Feeling of Using Clearing Ripple
 
 > You open the app not with a jolt of dopamine, but with a sense of calm intention.
 > You share a thought after a brief pause, feeling responsible but not anxious.
@@ -146,4 +146,4 @@ ISC
 
 ---
 
-*Community Net — Designed with karma, compassion, and inclusive equality*
+*Clearing Ripple — Designed with karma, compassion, and inclusive equality*
