@@ -12,8 +12,11 @@
   --color-background: var(--color-cream);
   --color-surface: var(--color-white);
   --color-text-primary: var(--color-charcoal);
+  --color-text-primary-dialog: var(--color-charcoal);
   --color-text-secondary: var(--color-warm-gray);
+  --color-text-secondary-dialog: var(--color-warm-gray);
   --color-accent: var(--color-earth-green);
+  --color-accent-dialog: var(--color-earth-green);
   --color-border: #d4d0c8;
   
   /* Spacing */
@@ -56,6 +59,10 @@
     --color-text-primary: #e8e4dc;
     --color-text-secondary: #a0a0a0;
     --color-border: #404040;
+    
+    --color-text-primary-dialog: var(--color-charcoal);
+      --color-text-secondary-dialog: var(--color-warm-gray);
+      --color-accent-dialog: var(--color-earth-green);
   }
 }
 
