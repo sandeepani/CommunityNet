@@ -539,6 +539,9 @@ function App() {
         <div className="dialogue-prompt">
           <p className="prompt-text">Before responding, can you share what you heard them say?</p>
           <textarea placeholder="What I hear you saying is..." rows={2} />
+          <button className="btn btn-primary" style={{ marginTop: '10px' }}>
+            Post Response
+          </button>
         </div>
       </div>
     </div>
