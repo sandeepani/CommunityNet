@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 function DialogueSpace({ messages, onPost }) {
   const [content, setContent] = useState('')
 
