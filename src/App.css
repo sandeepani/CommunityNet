@@ -462,6 +462,7 @@
   padding: var(--spacing-md);
   border-radius: var(--radius-md);
   margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
 }
 
 .dialogue-prompt {
@@ -469,6 +470,7 @@
   padding: var(--spacing-md);
   border-radius: var(--radius-md);
   border-left: 3px solid var(--color-accent);
+  color: var(--color-text-primary);
 }
 
 .prompt-text {
