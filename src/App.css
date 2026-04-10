@@ -423,6 +423,22 @@
   margin-bottom: var(--spacing-sm);
 }
 
+.dialogue-space {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dialogue-space h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.dialogue-space .text-muted {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
 .dialogue-guidelines {
   background-color: var(--color-sand);
   padding: var(--spacing-lg);
@@ -454,8 +470,8 @@
   color: var(--color-accent-dialog);
 }
 
-.dialogue-example {
-  margin-top: var(--spacing-lg);
+.dialogue-messages {
+  margin-bottom: var(--spacing-lg);
 }
 
 .dialogue-message {
@@ -464,6 +480,15 @@
   border-radius: var(--radius-md);
   margin-bottom: var(--spacing-md);
   color: var(--color-text-primary-dialog);
+}
+
+.dialogue-message p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.message-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
 }
 
 .dialogue-prompt {
@@ -490,6 +515,12 @@
   font-size: var(--font-size-base);
   background-color: var(--color-background);
   color: var(--color-text-primary);
+  resize: vertical;
+  margin-bottom: var(--spacing-sm);
+}
+
+.dialogue-prompt .btn {
+  width: 100%;
 }
 
 /* Profile */

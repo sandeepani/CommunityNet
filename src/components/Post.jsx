@@ -27,18 +27,18 @@ function Post({ post, onReaction, onPrivateAck, onFeedback }) {
 
       <PostReactions reactions={post.reactions} onReaction={(key) => onReaction && onReaction(post.id, key)} />
 
-      <div className="post-actions">
+      <div className="engagement-actions">
         <button 
-          className="action-btn"
+          className="btn btn-secondary btn-sm"
           onClick={() => onPrivateAck && onPrivateAck(post.id, post.author)}
         >
-          🙏 Private Acknowledgment
+          💌 Private Thanks
         </button>
         <button 
-          className="action-btn"
+          className="btn btn-secondary btn-sm"
           onClick={() => onFeedback && onFeedback(post.id)}
         >
-          💬 Constructive Feedback
+          💭 Reflect & Respond
         </button>
       </div>
     </article>

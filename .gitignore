@@ -3,8 +3,8 @@
 node_modules/
 
 # Build artifacts
-dist/
 build/
+dist/
 *.js.map
 
 # Logs and temp files
@@ -19,33 +19,63 @@ build/
 # Editors
 .vscode/
 .idea/
-*.swp
 
 # Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Compiled
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Coverage
-coverage/
-htmlcov/
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
 .coverage
-
-# Testing
-.pytest_cache/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/
 .mypy_cache/
+.pytest_cache/
+.hypothesis/
 
-# System
+# Distribution / packaging
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 ```
