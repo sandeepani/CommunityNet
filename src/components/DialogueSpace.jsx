@@ -34,7 +34,7 @@ function DialogueSpace({ messages, onPost }) {
       </div>
       <div className="dialogue-prompt">
         <textarea
-          placeholder="Share your thoughts or ask a question..."
+          placeholder="What I'm hearing is... Share your thoughts or ask a question..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows={3}

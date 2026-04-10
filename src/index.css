@@ -7,6 +7,7 @@
   --color-cream: #f5f3ef;
   --color-charcoal: #2d2d2d;
   --color-white: #ffffff;
+    --color-quick-silver: #a0a0a0;
   
   /* Semantic colors */
   --color-background: var(--color-cream);
@@ -57,11 +58,11 @@
     --color-background: #1a1a1a;
     --color-surface: #2d2d2d;
     --color-text-primary: #e8e4dc;
-    --color-text-secondary: #a0a0a0;
+    --color-text-secondary: var(--color-quick-silver);
     --color-border: #404040;
     
     --color-text-primary-dialog: var(--color-charcoal);
-      --color-text-secondary-dialog: var(--color-warm-gray);
+      --color-text-secondary-dialog: var(--color-quick-silver);
       --color-accent-dialog: var(--color-earth-green);
   }
 }
@@ -124,6 +125,7 @@ body {
 
 .btn-secondary:hover {
   background-color: var(--color-sand);
+  color: var(--color-text-primary-dialog);
 }
 
 .card {
