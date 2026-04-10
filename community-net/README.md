@@ -13,38 +13,55 @@ This is not a "Buddhist app" in ritual or dogma—but a digital environment wher
 - **Dark mode by default** to respect circadian rhythms
 
 ### Mindful Onboarding
-- **Intention setting** before joining
-- **Karmic Agreement** - a voluntary ethical covenant
-- **Inclusivity Pledge** - respecting diverse spiritual paths
+- **Reflect on Purpose**: "Why are you here? To connect? To learn? To share kindness?"
+- **Karmic Agreement**: A voluntary ethical covenant committing to truthful speech, open listening, and harm repair
+- **Inclusivity Pledge**: Respecting diverse spiritual paths without mockery or exclusion
+- Users can skip any step—the design gently encourages reflection
 
 ### The Feed
 - **Chronological posts** - no algorithmic amplification for engagement
-- **Optional Wisdom Filters** for constructive dialogue, community support, mindful reflection, and factual reporting
-- **Intention prompts** before posting
-- **Karmic Context Badges** showing ripple effects (acts of kindness, mutual understanding, etc.)
+- **Optional Wisdom Filters** for:
+  - 💬 Constructive Dialogue
+  - 🤝 Community Support
+  - 🧘 Mindful Reflection
+  - 📰 Factual Reporting
+- **Intention prompts** before posting: "What is your intention in sharing this? How might it affect others?"
+- **Karmic Context Badges** showing ripple effects:
+  - 🌱 This post has inspired 12 acts of kindness
+  - 💬 This discussion led to mutual understanding
+  - ⚠️ This claim is under community review for accuracy
 
 ### Compassionate Engagement
 - **No public like counts** or share counters
-- **Compassion Reactions**: Gratitude 🙏, Support 💙, Reflecting 💭, Dialogue 🤝, Wellbeing 🌿
-- **Private acknowledgment** options
-- **Restorative feedback** prompts for disagreement
+- **Compassion Reactions**: 
+  - 🙏 Gratitude
+  - 💙 Support
+  - 💭 I'm reflecting on this
+  - 🤝 Let's dialogue
+  - 🌿 This nurtures wellbeing
+- **Private Acknowledgment**: Send quiet notes of thanks visible only to the poster
+- **Restorative Feedback**: Guided prompts for disagreement:
+  - "What part resonates?"
+  - "What concerns you?"
+  - "How might we understand each other better?"
 
-### Karmic UX
-- **Ripple effect visualization** showing the impact of posts
-- **Harm repair flow** with restorative tools
-- **Aggregate, anonymized feedback** on post impact
+### Karmic UX - Making Consequences Visible
+- **After Posting Follow-up**: "Your post was seen by 200 people. 15 replied with gratitude; 3 asked for clarification; 1 reported feeling hurt."
+- **Ripple Visualization**: Non-identifying maps of impact for community projects
+- **Harm Repair Flow**: Restorative tools including apology templates, edit options, and community mediator links
 
 ### Built-in Mindfulness
-- **Scroll awareness** - gentle pause reminders after extended use
-- **Pre-post pause** for emotionally charged content
-- **Batch notifications** at user-chosen intervals
-- **Mindful previews** instead of urgent alerts
+- **Scroll Awareness**: Gentle pause reminders after 10-15 minutes: "Taking a breath? Your presence matters more than your scroll."
+- **Pre-Post Pause**: 3-second mindful breath animation for emotionally charged content (skippable)
+- **Batch Notifications**: Arrive at user-chosen intervals with mindful previews: "3 friends shared reflections on kindness. Open when you're ready."
 
 ### Restorative Dialogue
-- **Dialogue Mode** for heated discussions
-- **Paraphrasing prompts** before responding
-- **Community stewards** facilitating tough conversations
-- **Mute and distance** options before blocking
+- **Dialogue Mode** for heated discussions:
+  - Messages appear one at a time (no rapid-fire rebuttals)
+  - Prompts encourage paraphrasing: "Before responding, can you share what you heard them say?"
+  - Optional cool-down timer if language becomes harsh
+- **Community Stewards**: Trained volunteers facilitate tough conversations
+- **Mute and Distance** options before blocking
 
 ### Accessibility & Inclusivity
 - Full screen-reader support
@@ -52,14 +69,15 @@ This is not a "Buddhist app" in ritual or dogma—but a digital environment wher
 - Color-contrast modes
 - Low-bandwidth options
 - Multi-faith respect with no religious symbols in core UI
+- Interface available in many languages with cultural liaisons
 
 ## ❌ What's Deliberately Absent
 
 - Infinite scroll
 - Public follower counts or verification "clout" badges
-- Engagement-optimized algorithms
+- Engagement-optimized algorithms (no "rage-bait" amplification)
 - Dark patterns (disguised ads, forced continuity)
-- Surveillance-based personalization
+- Surveillance-based personalization ("You might also like…")
 - Viral sharing mechanics that reward speed over truth
 
 ## 🚀 Getting Started
@@ -119,6 +137,8 @@ community-net/
 > You read a differing view and feel curious, not defensive.
 > You close the app feeling connected, not depleted.
 > You rarely think about "time spent"—because the experience honors your time as precious.
+
+This isn't about perfection. Suffering (*dukkha*), misunderstanding, and conflict will still arise. But the *system* is designed to make wisdom, repair, and kindness the path of least resistance—which in itself is a heroic exception in the landscape of modern social media.
 
 ## 📄 License
 
