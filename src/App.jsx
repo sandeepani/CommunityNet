@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+// Components
+import Header from './components/Header'
+import Onboarding from './components/Onboarding'
+import IntentionPrompt from './components/IntentionPrompt'
+import MindfulPause from './components/MindfulPause'
+import PostComposer from './components/PostComposer'
+import WisdomFilters from './components/WisdomFilters'
+import Post from './components/Post'
+import DialogueSpace from './components/DialogueSpace'
+
 // Mock data for demonstration
 const mockPosts = [
   {
@@ -35,19 +45,9 @@ const mockPosts = [
   }
 ]
 
-const compassionReactions = [
-  { emoji: '🙏', name: 'Gratitude', key: 'gratitude' },
-  { emoji: '💙', name: 'Support', key: 'support' },
-  { emoji: '💭', name: 'Reflecting', key: 'reflecting' },
-  { emoji: '🤝', name: 'Dialogue', key: 'dialogue' },
-  { emoji: '🌿', name: 'Wellbeing', key: 'wellbeing' }
-]
-
-const wisdomFilters = [
-  { name: 'Constructive Dialogue', icon: '💬' },
-  { name: 'Community Support', icon: '🤝' },
-  { name: 'Mindful Reflection', icon: '🧘' },
-  { name: 'Factual Reporting', icon: '📰' }
+const mockDialogueMessages = [
+  { id: 1, author: 'Alex', content: 'What does mindfulness mean to you?', timestamp: '10 min ago' },
+  { id: 2, author: 'Jordan', content: 'To me, it\'s about being present without judgment.', timestamp: '8 min ago' }
 ]
 
 function App() {
@@ -84,6 +84,10 @@ function App() {
 
     return () => clearInterval(scrollInterval)
   }, [scrollTime])
+
+  const handleOnboardingAnswer = (field, value) => {
+    setOnboardingAnswers({...onboardingAnswers, [field]: value})
+  }
 
   // Handle pre-post breath animation for emotionally charged content
   const handlePostClick = () => {
@@ -157,444 +161,126 @@ function App() {
     setSelectedPostForFeedback(postId)
   }
 
-  const skipOnboardingStep = () => {
-    if (onboardingStep < 2) {
-      setOnboardingStep(prev => prev + 1)
-    } else {
-      setShowOnboarding(false)
-    }
-  }
-
-  const completeOnboardingStep = () => {
-    if (onboardingStep < 2) {
-      setOnboardingStep(prev => prev + 1)
-    } else {
-      setShowOnboarding(false)
-    }
-  }
-
-  const renderOnboarding = () => {
-    if (!showOnboarding) return null
-
-    return (
-      <div className="onboarding-overlay">
-        <div className="onboarding-modal card">
-          {onboardingStep === 0 && (
-            <div className="onboarding-step">
-              <h2>Welcome to Clearing Ripple</h2>
-              <p className="onboarding-subtitle">A mindful social space designed with karma, compassion, and inclusive equality</p>
-              
-              <h3>Reflect on Your Purpose</h3>
-              <p className="prompt-question">Why are you here?</p>
-              
-              <div className="purpose-options">
-                <button 
-                  className={`purpose-option ${onboardingAnswers.purpose === 'To connect' ? 'selected' : ''}`}
-                  onClick={() => setOnboardingAnswers({...onboardingAnswers, purpose: 'To connect'})}
-                >
-                  🤝 To connect with others
-                </button>
-                <button 
-                  className={`purpose-option ${onboardingAnswers.purpose === 'To learn' ? 'selected' : ''}`}
-                  onClick={() => setOnboardingAnswers({...onboardingAnswers, purpose: 'To learn'})}
-                >
-                  📚 To learn and grow
-                </button>
-                <button 
-                  className={`purpose-option ${onboardingAnswers.purpose === 'To share kindness' ? 'selected' : ''}`}
-                  onClick={() => setOnboardingAnswers({...onboardingAnswers, purpose: 'To share kindness'})}
-                >
-                  💙 To share kindness
-                </button>
-                <button 
-                  className={`purpose-option ${onboardingAnswers.purpose === 'To listen' ? 'selected' : ''}`}
-                  onClick={() => setOnboardingAnswers({...onboardingAnswers, purpose: 'To listen'})}
-                >
-                  👂 To listen deeply
-                </button>
-              </div>
-              
-              <div className="onboarding-actions">
-                <button className="btn btn-secondary" onClick={skipOnboardingStep}>Skip</button>
-                <button 
-                  className="btn btn-primary" 
-                  onClick={completeOnboardingStep}
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          )}
-
-          {onboardingStep === 1 && (
-            <div className="onboarding-step">
-              <h2>Karmic Agreement</h2>
-              <p className="onboarding-subtitle">A voluntary ethical anchor for our community</p>
-              
-              <div className="karmic-agreement-text">
-                <p>"I understand my words and actions here create ripples.</p>
-                <p>I commit to speaking truthfully, listening openly,</p>
-                <p>and repairing harm if I cause it."</p>
-              </div>
-              
-              <label className="checkbox-label">
-                <input 
-                  type="checkbox"
-                  checked={onboardingAnswers.karmicAgreement}
-                  onChange={(e) => setOnboardingAnswers({...onboardingAnswers, karmicAgreement: e.target.checked})}
-                />
-                <span>I agree to this covenant</span>
-              </label>
-              
-              <div className="onboarding-actions">
-                <button className="btn btn-secondary" onClick={skipOnboardingStep}>Skip</button>
-                <button 
-                  className="btn btn-primary" 
-                  onClick={completeOnboardingStep}
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          )}
-
-          {onboardingStep === 2 && (
-            <div className="onboarding-step">
-              <h2>Inclusivity Pledge</h2>
-              <p className="onboarding-subtitle">Respecting diverse paths and perspectives</p>
-              
-              <div className="inclusivity-pledge-text">
-                <p>"I respect that others walk different spiritual paths.</p>
-                <p>I will not mock, proselytize, or exclude based on belief."</p>
-              </div>
-              
-              <label className="checkbox-label">
-                <input 
-                  type="checkbox"
-                  checked={onboardingAnswers.inclusivityPledge}
-                  onChange={(e) => setOnboardingAnswers({...onboardingAnswers, inclusivityPledge: e.target.checked})}
-                />
-                <span>I pledge to honor this commitment</span>
-              </label>
-              
-              <div className="onboarding-actions">
-                <button className="btn btn-secondary" onClick={skipOnboardingStep}>Skip</button>
-                <button 
-                  className="btn btn-primary" 
-                  onClick={completeOnboardingStep}
-                >
-                  Begin Mindfully
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    )
-  }
-
-  const renderHeader = () => (
-    <header className="app-header">
-      <div className="header-content">
-        <div className="logo">
-          <span className="logo-icon">🌐</span>
-          <h1>Clearing Ripple</h1>
-        </div>
-        <nav className="nav-menu">
-          <button 
-            className={`nav-btn ${currentView === 'feed' ? 'active' : ''}`}
-            onClick={() => setCurrentView('feed')}
-          >
-            Feed
-          </button>
-          <button 
-            className={`nav-btn ${currentView === 'dialogue' ? 'active' : ''}`}
-            onClick={() => setCurrentView('dialogue')}
-          >
-            Dialogue
-          </button>
-          <button 
-            className={`nav-btn ${currentView === 'profile' ? 'active' : ''}`}
-            onClick={() => setCurrentView('profile')}
-          >
-            Profile
-          </button>
-        </nav>
-      </div>
-    </header>
-  )
-
-  const renderIntentionPrompt = () => (
-    <div className="intention-prompt-overlay" onClick={() => setShowIntentionPrompt(false)}>
-      <div className="intention-prompt" onClick={e => e.stopPropagation()}>
-        <h3>Before you share...</h3>
-        <p className="prompt-question">What is your intention in sharing this?</p>
-        <div className="intention-options">
-          <button 
-            className={`intention-option ${postIntention === 'Constructive Dialogue' ? 'selected' : ''}`}
-            onClick={() => setPostIntention('Constructive Dialogue')}
-          >
-            💬 Constructive Dialogue
-          </button>
-          <button 
-            className={`intention-option ${postIntention === 'Community Support' ? 'selected' : ''}`}
-            onClick={() => setPostIntention('Community Support')}
-          >
-            🤝 Community Support
-          </button>
-          <button 
-            className={`intention-option ${postIntention === 'Mindful Reflection' ? 'selected' : ''}`}
-            onClick={() => setPostIntention('Mindful Reflection')}
-          >
-            🧘 Mindful Reflection
-          </button>
-          <button 
-            className={`intention-option ${postIntention === 'Factual Reporting' ? 'selected' : ''}`}
-            onClick={() => setPostIntention('Factual Reporting')}
-          >
-            📰 Factual Reporting
-          </button>
-        </div>
-        <p className="prompt-secondary">How might it affect others?</p>
-        <div className="prompt-actions">
-          <button className="btn btn-secondary" onClick={() => setShowIntentionPrompt(false)}>
-            Cancel
-          </button>
-          <button className="btn btn-primary" onClick={handlePostSubmit}>
-            Share Mindfully
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-
-  const renderMindfulPause = () => (
-    <div className="mindful-pause-toast">
-      <span>🌸</span>
-      <p>Taking a breath? Your presence matters more than your scroll.</p>
-    </div>
-  )
-
-  const renderPostComposer = () => (
-    <div className="post-composer card">
-      <div className="composer-header">
-        <div className="avatar">YO</div>
-        <textarea
-          className="composer-input"
-          placeholder="What would you like to share with the community?"
-          value={newPostContent}
-          onChange={(e) => setNewPostContent(e.target.value)}
-          rows={3}
-        />
-      </div>
-      <div className="composer-footer">
-        <button 
-          className="btn btn-secondary"
-          onClick={handlePostClick}
-        >
-          Set Intention
-        </button>
-        <button 
-          className="btn btn-primary"
-          onClick={showIntentionPrompt ? undefined : handlePostSubmit}
-          disabled={!newPostContent.trim()}
-        >
-          Share
-        </button>
-      </div>
-    </div>
-  )
-
-  const renderKarmicBadge = (badge) => {
-    if (!badge) return null
-    
-    const badgeIcons = {
-      kindness: '🌱',
-      dialogue: '💬',
-      review: '⚠️'
-    }
-
-    return (
-      <div className={`karmic-badge badge-${badge.type}`}>
-        <span>{badgeIcons[badge.type]}</span>
-        <span>{badge.label}</span>
-      </div>
-    )
-  }
-
-  const renderPost = (post) => (
-    <article key={post.id} className="post card">
-      <div className="post-header">
-        <div className="avatar">{post.avatar}</div>
-        <div className="post-meta">
-          <h4 className="author-name">{post.author}</h4>
-          <span className="timestamp">{post.timestamp}</span>
-        </div>
-      </div>
-      
-      <div className="post-content">
-        <p>{post.content}</p>
-        {post.intentions.length > 0 && (
-          <div className="intention-tags">
-            {post.intentions.map((intention, idx) => (
-              <span key={idx} className="intention-tag">{intention}</span>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {renderKarmicBadge(post.karmicBadge)}
-
-      <div className="post-reactions">
-        <div className="reaction-buttons">
-          {compassionReactions.map((reaction) => (
-            <button
-              key={reaction.key}
-              className="reaction-btn"
-              onClick={() => handleReaction(post.id, reaction.key)}
-              title={reaction.name}
-            >
-              {reaction.emoji}
-              {post.reactions[reaction.key] > 0 && (
-                <span className="reaction-count">{post.reactions[reaction.key]}</span>
-              )}
-            </button>
-          ))}
-        </div>
-        <div className="engagement-actions">
-          <button 
-            className="btn btn-secondary btn-sm"
-            onClick={() => handlePrivateAcknowledgment(post.id, post.author)}
-          >
-            💌 Private Thanks
-          </button>
-          <button 
-            className="btn btn-secondary btn-sm"
-            onClick={() => handleConstructiveFeedback(post.id)}
-          >
-            💭 Reflect & Respond
-          </button>
-        </div>
-      </div>
-    </article>
-  )
-
-  const renderFeed = () => (
-    <div className="feed">
-      {renderPostComposer()}
-      <div className="feed-filters">
-        <button className="filter-btn active">Chronological</button>
-        <button className="filter-btn">🌱 Wisdom Filter</button>
-      </div>
-      {activeWisdomFilters.length > 0 && (
-        <div className="active-filters">
-          <span className="filter-label">Active filters:</span>
-          {activeWisdomFilters.map(filter => (
-            <button 
-              key={filter} 
-              className="active-filter-tag"
-              onClick={() => toggleWisdomFilter(filter)}
-            >
-              {filter} ×
-            </button>
-          ))}
-        </div>
-      )}
-      <div className="wisdom-filters-container">
-        {wisdomFilters.map((filter) => (
-          <button
-            key={filter.name}
-            className={`wisdom-filter-btn ${activeWisdomFilters.includes(filter.name) ? 'active' : ''}`}
-            onClick={() => toggleWisdomFilter(filter.name)}
-          >
-            {filter.icon} {filter.name}
-          </button>
-        ))}
-      </div>
-      <div className="posts-list">
-        {filteredPosts.map(renderPost)}
-      </div>
-    </div>
-  )
-
-  const renderDialogueMode = () => (
-    <div className="dialogue-mode card">
-      <h2>Dialogue Space</h2>
-      <p className="text-muted">A restorative space for thoughtful conversation</p>
-      
-      <div className="dialogue-guidelines">
-        <h3>Guidelines for Dialogue</h3>
-        <ul>
-          <li>Listen deeply before responding</li>
-          <li>Paraphrase what you heard: "What I'm hearing is..."</li>
-          <li>Speak from your own experience</li>
-          <li>Assume good intentions</li>
-        </ul>
-      </div>
-
-      <div className="dialogue-example">
-        <div className="dialogue-message received">
-          <p>I've been feeling overwhelmed by the news lately...</p>
-        </div>
-        <div className="dialogue-prompt">
-          <p className="prompt-text">Before responding, can you share what you heard them say?</p>
-          <textarea placeholder="What I hear you saying is..." rows={2} />
-          <button className="btn btn-primary" style={{ marginTop: '10px' }}>
-            Post Response
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-
-  const renderProfile = () => (
-    <div className="profile card">
-      <div className="profile-header">
-        <div className="avatar large">YO</div>
-        <h2>Your Profile</h2>
-      </div>
-      
-      <div className="profile-stats">
-        <div className="stat">
-          <span className="stat-number">24</span>
-          <span className="stat-label">Acts of Kindness Inspired</span>
-        </div>
-        <div className="stat">
-          <span className="stat-number">8</span>
-          <span className="stat-label">Meaningful Dialogues</span>
-        </div>
-        <div className="stat">
-          <span className="stat-number">15</span>
-          <span className="stat-label">Days Mindful</span>
-        </div>
-      </div>
-
-      <div className="karmic-agreement">
-        <h3>Your Karmic Agreement</h3>
-        <p>"I understand my words and actions here create ripples. I commit to speaking truthfully, listening openly, and repairing harm if I cause it."</p>
-      </div>
-    </div>
-  )
-
   return (
     <div className="app">
-      {renderHeader()}
+      <Header 
+        currentView={currentView}
+        onViewChange={setCurrentView}
+      />
       
       <main className="main-content container">
-        {currentView === 'feed' && renderFeed()}
-        {currentView === 'dialogue' && renderDialogueMode()}
-        {currentView === 'profile' && renderProfile()}
+        {currentView === 'feed' && (
+          <div className="feed">
+            <PostComposer 
+              content={newPostContent}
+              onContentChange={setNewPostContent}
+              onPost={() => {
+                if (!newPostContent.trim()) return
+                handlePostSubmit()
+              }}
+              onSetIntention={handlePostClick}
+            />
+            <WisdomFilters 
+              activeFilters={activeWisdomFilters}
+              onToggleFilter={toggleWisdomFilter}
+            />
+            {activeWisdomFilters.length > 0 && (
+              <div className="active-filters">
+                <span className="filter-label">Active filters:</span>
+                {activeWisdomFilters.map(filter => (
+                  <button 
+                    key={filter} 
+                    className="active-filter-tag"
+                    onClick={() => toggleWisdomFilter(filter)}
+                  >
+                    {filter} ×
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="posts-list">
+              {filteredPosts.map(post => (
+                <Post 
+                  key={post.id}
+                  post={post}
+                  onReaction={handleReaction}
+                  onPrivateAck={handlePrivateAcknowledgment}
+                  onFeedback={handleConstructiveFeedback}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        {currentView === 'dialogue' && (
+          <DialogueSpace 
+            messages={mockDialogueMessages}
+            onPost={(content) => console.log('Posted:', content)}
+          />
+        )}
+        {currentView === 'profile' && (
+          <div className="profile card">
+            <div className="profile-header">
+              <div className="avatar large">YO</div>
+              <h2>Your Profile</h2>
+            </div>
+            
+            <div className="profile-stats">
+              <div className="stat">
+                <span className="stat-number">24</span>
+                <span className="stat-label">Acts of Kindness Inspired</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">8</span>
+                <span className="stat-label">Meaningful Dialogues</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">15</span>
+                <span className="stat-label">Days Mindful</span>
+              </div>
+            </div>
+
+            <div className="karmic-agreement">
+              <h3>Your Karmic Agreement</h3>
+              <p>"I understand my words and actions here create ripples. I commit to speaking truthfully, listening openly, and repairing harm if I cause it."</p>
+            </div>
+          </div>
+        )}
       </main>
 
-      {showOnboarding && renderOnboarding()}
-      {showIntentionPrompt && renderIntentionPrompt()}
-      {showMindfulPause && renderMindfulPause()}
+      <Onboarding 
+        show={showOnboarding}
+        currentStep={onboardingStep}
+        answers={onboardingAnswers}
+        onAnswer={handleOnboardingAnswer}
+        onNext={() => setOnboardingStep(prev => prev + 1)}
+        onSkip={() => {
+          if (onboardingStep < 2) {
+            setOnboardingStep(prev => prev + 1)
+          } else {
+            setShowOnboarding(false)
+          }
+        }}
+        onComplete={() => setShowOnboarding(false)}
+      />
+      
+      {showIntentionPrompt && (
+        <IntentionPrompt 
+          selectedIntention={postIntention}
+          onSelect={setPostIntention}
+          onConfirm={handlePostSubmit}
+          onCancel={() => setShowIntentionPrompt(false)}
+        />
+      )}
+      
+      <MindfulPause show={showMindfulPause} />
+      
       {showBreathAnimation && (
         <div className="breath-animation-overlay">
           <div className="breath-circle"></div>
           <p>Breathe in... Breathe out...</p>
         </div>
       )}
+      
       {showPrivateAckModal && (
         <div className="private-ack-modal-overlay" onClick={() => setShowPrivateAckModal(null)}>
           <div className="private-ack-modal card" onClick={e => e.stopPropagation()}>
@@ -615,6 +301,7 @@ function App() {
           </div>
         </div>
       )}
+      
       {selectedPostForFeedback && (
         <div className="feedback-modal-overlay" onClick={() => setSelectedPostForFeedback(null)}>
           <div className="feedback-modal card" onClick={e => e.stopPropagation()}>
@@ -630,26 +317,20 @@ function App() {
                 <textarea placeholder="Express your concerns gently..." rows={3} />
               </div>
               <div className="feedback-section">
-                <label>How might we understand each other better?</label>
-                <textarea placeholder="Suggest ways to bridge our perspectives..." rows={3} />
+                <label>Suggest a question that could deepen understanding</label>
+                <textarea placeholder="I'm curious about..." rows={2} />
               </div>
             </div>
             <div className="modal-actions">
               <button className="btn btn-secondary" onClick={() => setSelectedPostForFeedback(null)}>Cancel</button>
               <button className="btn btn-primary" onClick={() => {
-                console.log('Constructive feedback submitted')
+                console.log('Feedback submitted')
                 setSelectedPostForFeedback(null)
-              }}>Share Thoughtfully</button>
+              }}>Submit Feedback</button>
             </div>
           </div>
         </div>
       )}
-
-      <footer className="app-footer">
-        <p className="text-muted text-center">
-          Clearing Ripple — Designed with karma, compassion, and inclusive equality
-        </p>
-      </footer>
     </div>
   )
 }
